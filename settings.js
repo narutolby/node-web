@@ -1,0 +1,3 @@
+modual.exports = {
+	controller : "service"
+}

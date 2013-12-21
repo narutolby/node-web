@@ -1,0 +1,22 @@
+{
+  "name": "node-web",
+  "version": "0.0.1",
+  "description": "A web application based on node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/narutolby/node-web"
+  },
+  "keywords": [
+    "web"
+  ],
+  "author": "narutolby",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/narutolby/node-web/issues"
+  },
+  "homepage": "https://github.com/narutolby/node-web"
+}
