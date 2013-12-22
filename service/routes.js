@@ -1,5 +1,5 @@
-var querystring = require("./querystring");
-var requestMapping = require("./requestMapping");
+var querystring = require("querystring");
+var requestMapping = require("./requestMapping").requestMapping;
 var url = require("url");
 function route( request , response ){
 	var pathName = url.parse(request.url).pathname,
@@ -14,17 +14,18 @@ function route( request , response ){
 	if(requestMapping[method]){
 		var _m = requestMapping[method],path,_reg;
 		for(path in _m){
-			_reg = new RegExp(path.replace(reg, 
+			_reg = new RegExp("^" + path.replace(reg, 
 				function(x,y){
+					_vNames.length = 0;
 					_vNames.push(y);
-					return "(.*?)";
-				}));
+					return "([^/]*?)";
+				}) + "$");
 			if(_reg.test(pathName)){
 				_vValues = pathName.match(_reg);
 				for(var i=0;i<_vNames.length;i++){
 					pathVariables[_vNames[i]] = _vValues[i+1];
 				}
-				return _m(request,response,pathVariables);
+				return _m[path](request,response,pathVariables);
 			}
 		}
 		return {

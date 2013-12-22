@@ -1,11 +1,11 @@
-var  requestHandler = require("./requestHandler");
+var  requestHandler = require("./requestHandler").requestHandler;
 exports.requestMapping = {
 
 	"GET" : {
 		//下载资源接口
-		"resource/{id}" : requestHandler.downloadResource,
+		"/resource/{id}" : requestHandler.downloadResource,
 		//获取某资源相关数据接口
-		"resource/data/{id}" : requestHandler.getResourceDataById,
+		"/resource/data/{id}" : requestHandler.getResourceDataById,
 		//分页显示某类型资源数据接口
 		"/resource/data/{type}/{begin}/to/{end}" : requestHandler.getDataByResourceType,
 		//获取某类型全部资源数据接口

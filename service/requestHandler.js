@@ -15,19 +15,19 @@ exports.requestHandler = {
 
   getDataByResourceType : function ( request , response , pathVariables ) {
   	// body...
-  }
+  },
 
   getAllResourceDataByType : function ( request , response , pathVariables ) {
   	// body...
-  }  
+  } ,
 
   getAllResourceData : function ( request , response , pathVariables ) {
   	// body...
-  }
+  },
 
   deleteResourceById : function ( request , response , pathVariables ) {
   	// body...
-  }
+  },
 
   renameResourceById : function ( request , response , pathVariables ){
 
