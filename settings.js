@@ -1,3 +1,3 @@
-modual.exports = {
+module.exports = {
 	controller : "service"
 }
