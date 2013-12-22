@@ -1,7 +1,7 @@
 var querystring = require("querystring");
 var requestMapping = require("./requestMapping").requestMapping;
 var url = require("url");
-function route( request , response ){
+function route( request , response , callback ){
 	var pathName = url.parse(request.url).pathname,
 		query = url.parse(request.url).query,
 		method = request.method,
@@ -14,9 +14,9 @@ function route( request , response ){
 	if(requestMapping[method]){
 		var _m = requestMapping[method],path,_reg;
 		for(path in _m){
+			_vNames.length = 0;
 			_reg = new RegExp("^" + path.replace(reg, 
 				function(x,y){
-					_vNames.length = 0;
 					_vNames.push(y);
 					return "([^/]*?)";
 				}) + "$");
@@ -25,7 +25,7 @@ function route( request , response ){
 				for(var i=0;i<_vNames.length;i++){
 					pathVariables[_vNames[i]] = _vValues[i+1];
 				}
-				return _m[path](request,response,pathVariables);
+				return _m[path](request,response,pathVariables,callback);
 			}
 		}
 		return {
