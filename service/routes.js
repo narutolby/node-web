@@ -7,6 +7,7 @@ function route( request , response , callback ){
 		method = request.method,
 		reg = /\{(.*?)\}/g,
 		pathVariables = {},
+		//存储参数名称
 		_vNames = [],
 		_vValues;
 	console.log("Request for " + pathName);
