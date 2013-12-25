@@ -27,9 +27,9 @@ exports.requestHandler = {
         cb();
       });
     });*/
-hdfs.readFile(hdfs_file_path,function(e,data){
+hdfs.readFile(hdfs_file_path,function(e,data)){
   console.log(data);
-});
+}
   },
 
 
