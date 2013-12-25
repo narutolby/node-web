@@ -6,5 +6,6 @@ module.exports = {
 		 password: 'pcncad197',
 		 database:'BR',
 		 port: 3306
-	}
+	},
+	base_path : "C:"
 }
