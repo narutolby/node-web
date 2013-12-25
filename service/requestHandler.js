@@ -1,6 +1,6 @@
 var db = require("./db");
 var _u = undefined;
-HDFS = require('../node-hdfs');
+//HDFS = require('../node-hdfs');
 //var hdfs = new HDFS({host:"127.0.0.1", port:"50070"});
 var hdfs = require("fs");
 exports.requestHandler = {
