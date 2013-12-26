@@ -15,17 +15,23 @@ exports.requestHandler = {
     tmpStr = resourceId.substring(26),
     hdfs_file_path = tmpStr.replace(/(?=(\w{2})*$)/g,path.sep) + resourceId ;
     db.get(function(rows){
-      var resourceType = rows[0]["resource_type"],
-      resourceRealName = rows[0]["resource_real_name"];
-      hdfs_file_path = settings.base_path + hdfs_file_path + "." + resourceType;
-      /*******/
-      hdfs.readFile(hdfs_file_path,function(e,data){
-           response.writeHead(200 , {
-          "Content-type" : "application/octet-stream;charset=utf-8",
-          "Content-disposition" : "attachment; filename='" + new Buffer(resourceRealName).toString('binary') + "'"
-      }); 
-      response.write(data);
-      response.end();
+        var resourceType = rows[0]["resource_type"],
+        resourceRealName = rows[0]["resource_real_name"];
+        hdfs_file_path = settings.base_path + hdfs_file_path + "." + resourceType;
+        /*******/
+        hdfs.readFile(hdfs_file_path,function(e,data){
+             if(e){
+                 response.writeHead(500,{"Content-type":"text/plain"});
+                 response.write("Server error");
+                 response.end();
+                 return;
+             }
+             response.writeHead(200 , {
+                "Content-type" : "application/octet-stream;charset=utf-8",
+                "Content-disposition" : "attachment; filename='" + new Buffer(resourceRealName).toString('binary') + "'"
+            }); 
+           response.write(data);
+           response.end();
      });
       /*******/
      /* 
@@ -45,26 +51,26 @@ exports.requestHandler = {
           response.write(data);
           response.end();
         });
-      }); */
-      /*******/
-    },_u,_u,_u,pathVariables["id"]);
+}); */
+/*******/
+},_u,_u,_u,pathVariables["id"]);
 },
 
 
 getResourceDataById : function( request , response , pathVariables ,callback){
-  db.get(callback,_u,_u,_u,pathVariables["id"]);
+     db.get(callback,_u,_u,_u,pathVariables["id"]);
 },
 
 getDataByResourceType : function ( request , response , pathVariables ,callback) {
-  db.get(callback,pathVariables["type"],pathVariables["begin"],pathVariables["end"]);
+     db.get(callback,pathVariables["type"],pathVariables["begin"],pathVariables["end"]);
 },
 
 getAllResourceDataByType : function ( request , response , pathVariables ,callback ) {
-  db.get(callback,pathVariables["type"]);
+     db.get(callback,pathVariables["type"]);
 } ,
 
 getAllResourceData : function ( request , response , pathVariables ,callback ) {
-  db.get(callback);
+     db.get(callback);
 },
 
 deleteResourceById : function ( request , response , pathVariables ,callback ) {

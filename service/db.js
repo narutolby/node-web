@@ -10,11 +10,15 @@ module.exports = {
 	get : function(callback , type , begin , end ,id){
 		var selectSql = "select * from RESOURCE" ;
 
-		if(type){
-			selectSql += " where resource_type='" + type + "'";
+		if(type && type != "all"){
+			if(type == "word"){
+				selectSql += " where resource_type='doc' or resource_type='docx'";
+			}else{
+				selectSql += " where resource_type='" + type + "'";
+			}
 		}
 		if(begin && end){
-			selectSql += " limit " +begin+ "," + end;
+			selectSql += " order by download_times desc limit " +begin+ "," + end;
 		}
 
 		if(id && id !== "all"){
