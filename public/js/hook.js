@@ -2,7 +2,11 @@
 	var domain = "127.0.0.1:8989";
 	var $ = undefined;
 	var app = {
-		htmlTmp : "<div style='position:fixed;width:226px;height:326px'></div>"
+		htmlTmp : "<div style='position:fixed;width:226px;height:326px;background:#f6f6f6;border:1px solid #e9e9e9;top:100px;right:0px' id='r_box'>"
+		+	"<div id='r_slide' style='background: url(http://"+domain +"/static/img/tip.png) no-repeat;"
++ "color: #FFFFFF; padding: 8px 6px; font-family:Microsoft Yahei; font-weight: bold; font-size: 13px; cursor: pointer; position: absolute;"
++ "left: -24px; top: 60px; width: 24px; height: 88px;'>资源分享</div>"
++	"</div>",
 		start : function(){
 			var sc = document.createElement('script');
 			sc.type = 'text/javascript';
@@ -23,8 +27,8 @@
 			}
 		},
 		init : function(){
-			$ = jquery;
-
+			$ = jQuery;
+			$(app.htmlTmp).appendTo(doc.body);
 		}
 	}
 	app.start();
