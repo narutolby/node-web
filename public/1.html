@@ -1,0 +1,787 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Smiling Game</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {
+background-color: #566D8F;
+}
+
+div {
+margin: 0px;
+padding: 0px;
+border: 0px;
+}
+
+.description {
+width: 960px;
+margin: 20px auto;
+font-family: 'League Gothic','Bebas Neue','Arial Narrow', Arial, sans-serif;
+font-size: 28px;
+line-height: 28px;
+color: #30abd5;
+}
+
+.description span {
+font-family: 'League Gothic','Bebas Neue','Arial Narrow', Arial, sans-serif;
+font-size: 20px;
+line-height: 20px;
+color: #55E710;
+margin-left: 20px;
+}
+
+.button {
+color: #ffffff;
+background-color: #428bca;
+border-color: #285e8e;
+display: inline;
+padding: 5px;
+margin: 0px 10px;
+cursor: pointer;
+border-radius: 6px;
+}
+
+.button:hover {
+background-color: #168ef7;
+-webkit-box-shadow: #f3ea0b 0 0 20px;
+-webkit-box-shadow: #f3ea0b 0 0 20px;
+-ms-box-shadow: #f3ea0b 0 0 20px;
+-o-box-shadow: #f3ea0b 0 0 20px;
+box-shadow: #f3ea0b 0 0 20px;
+}
+
+.twinkle {
+-webkit-animation: twinkle 1s linear infinite;
+-webkit-animation: twinkle 1s linear infinite;
+-ms-animation: twinkle 1s linear infinite;
+-o-animation: twinkle 1s linear infinite;
+animation: twinkle 1s linear infinite;
+}
+
+@-webkit-keyframes twinkle {
+	50% {-webkit-box-shadow: #f3ea0b 0 0 20px;box-shadow: #f3ea0b 0 0 20px;}
+}
+
+@-moz-keyframes twinkle {
+	50% {-moz-box-shadow: #f3ea0b 0 0 20px;box-shadow: #f3ea0b 0 0 20px;}
+}
+
+@-ms-keyframes twinkle {
+	50% {-ms-box-shadow: #f3ea0b 0 0 20px;box-shadow: #f3ea0b 0 0 20px;}
+}
+
+@-o-keyframes twinkle {
+	50% {-o-box-shadow: #f3ea0b 0 0 20px;box-shadow: #f3ea0b 0 0 20px;}
+}
+
+@keyframes twinkle {
+	50% {box-shadow: #f3ea0b 0 0 20px;}
+}
+
+.wrapper {
+width: 960px;
+margin: 0 auto;
+position: relative;
+text-align: center;
+}
+
+.pane {
+margin: 0 auto;
+}
+
+.item {
+width: 100px;
+height: 100px;
+position: relative;
+float: left;
+-webkit-transform-style: preserve-3d;
+-moz-transform-style: preserve-3d;
+-ms-transform-style: preserve-3d;
+-o-transform-style: preserve-3d;
+transform-style: preserve-3d;
+-webkit-transition: all 0.5s ease-in-out;
+-moz-transition: all 0.5s ease-in-out;
+-ms-transition: all 0.5s ease-in-out;
+-o-transition: all 0.5s ease-in-out;
+transition: all 0.5s ease-in-out;
+}
+
+.item.inverse {
+-webkit-transform: rotateY(180deg);
+-moz-transform: rotateY(180deg);
+-ms-transform: rotateY(180deg);
+-o-transform: rotateY(180deg);
+transform: rotateY(180deg);
+}
+
+.face {
+width: 100px;
+height: 100px;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+-webkit-backface-visibility: hidden;
+-moz-backface-visibility: hidden;
+-ms-backface-visibility: hidden;
+-o-backface-visibility: hidden;
+backface-visibility: hidden;
+}
+
+.face-smile {
+background-color: #ffbd38;
+-webkit-transform: rotateY(0deg);
+-moz-transform: rotateY(0deg);
+-ms-transform: rotateY(0deg);
+-o-transform: rotateY(0deg);
+transform: rotateY(0deg);
+z-index: 2;
+}
+
+.face-smile:before {
+content: "";
+position: absolute;
+top: 1%;
+left: 5%;
+width: 90%;
+height: 90%;
+border-radius: 50%;
+background-image: -webkit-radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+background-image: -moz-radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+background-image: -ms-radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+background-image: -o-radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+background-image: gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+}
+
+.face-smile:after {
+content: "";
+position: absolute;
+border-radius: 100%;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+background-image: -webkit-radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+background-image: -moz-radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+background-image: -ms-radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+background-image: -o-radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+background-image: radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+}
+
+.inverse .face-smile {
+z-index: 1;
+}
+
+.face-cry {
+background-color: #add8e6;
+-webkit-transform: rotateY(180deg);
+-moz-transform: rotateY(180deg);
+-ms-transform: rotateY(180deg);
+-o-transform: rotateY(180deg);
+transform: rotateY(180deg);
+z-index: 1;
+}
+
+.face-cry:before {
+content: "";
+position: absolute;
+top: 1%;
+left: 5%;
+width: 90%;
+height: 90%;
+border-radius: 50%;
+background-image: -webkit-radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+background-image: -moz-radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+background-image: -ms-radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+background-image: -o-radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+background-image: gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%);
+}
+
+.face-cry:after {
+content: "";
+position: absolute;
+border-radius: 100%;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+background-image: -webkit-radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+background-image: -moz-radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+background-image: -ms-radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+background-image: -o-radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+background-image: radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, #575300 100%);
+}
+
+.inverse .face-cry {
+z-index: 2;
+}
+
+.face-smile .eye {
+width: 5px;
+height: 19px;
+position: absolute;
+background-color: #000000;
+border-radius: 50%;
+}
+
+.face-smile .eye-left {
+top: 12px;
+left: 37px;
+}
+
+.face-smile .eye-right {
+top: 12px;
+left: 58px;
+}
+
+.face-smile .mouth {
+width: 67px;
+height: 70px;
+position: absolute;
+top: -13px;
+left: 11px;
+border-bottom: 4px solid #000000;
+border-left: 4px solid transparent;
+border-right: 4px solid transparent;
+border-radius: 50%;
+}
+
+.face-smile .mouth:before {
+content: "";
+width: 4px;
+height: 10px;
+position: absolute;
+top: 55px;
+left: 6px;
+background-color: #000000;
+border-radius: 50%;
+-webkit-transform: rotate(52deg);
+-moz-transform: rotate(52deg);
+-ms-transform: rotate(52deg);
+-o-transform: rotate(52deg);
+transform: rotate(52deg);
+}
+
+.face-smile .mouth:after {
+content: "";
+width: 4px;
+height: 10px;
+position: absolute;
+top: 55px;
+left: 56px;
+background-color: #000000;
+border-radius: 50%;
+-webkit-transform: rotate(-37deg);
+-moz-transform: rotate(-37deg);
+-ms-transform: rotate(-37deg);
+-o-transform: rotate(-37deg);
+transform: rotate(-37deg);
+}
+
+.face-cry .eye {
+width: 5px;
+height: 19px;
+position: absolute;
+background-color: #000000;
+border-radius: 50%;
+}
+
+.face-cry .eye-left {
+top: 12px;
+left: 37px;
+}
+
+.face-cry .eye-right {
+top: 12px;
+left: 58px;
+}
+
+.face-cry .mouth {
+width: 67px;
+height: 70px;
+position: absolute;
+top: 50px;
+left: 11px;
+border-top: 4px solid #000000;
+border-left: 4px solid transparent;
+border-right: 4px solid transparent;
+border-radius: 50%;
+}
+
+.face-cry .mouth:before {
+content: "";
+width: 4px;
+height: 10px;
+position: absolute;
+top: 3px;
+left: 6px;
+background-color: #000000;
+border-radius: 50%;
+-webkit-transform: rotate(-52deg);
+-moz-transform: rotate(-52deg);
+-ms-transform: rotate(-52deg);
+-o-transform: rotate(-52deg);
+transform: rotate(-52deg);
+}
+
+.face-cry .mouth:after {
+content: "";
+width: 4px;
+height: 10px;
+position: absolute;
+top: 3px;
+left: 56px;
+background-color: #000000;
+border-radius: 50%;
+-webkit-transform: rotate(37deg);
+-moz-transform: rotate(37deg);
+-ms-transform: rotate(37deg);
+-o-transform: rotate(37deg);
+transform: rotate(37deg);
+}
+
+.blink .eye-left {
+-webkit-animation: eye-left-blink 0.3s linear;
+-moz-animation: eye-left-blink 0.3s linear;
+-ms-animation: eye-left-blink 0.3s linear;
+-o-animation: eye-left-blink 0.3s linear;
+animation: eye-left-blink 0.3s linear;
+}
+
+@-webkit-keyframes eye-left-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 37px;}
+25% {width: 19px;height: 5px;top: 19px;left: 30px;}
+50% {width: 5px;height: 19px;top: 12px;left: 37px;}
+75% {width: 19px;height: 5px;top: 19px;left: 30px;}
+100% {width: 5px;height: 19px;top: 12px;left: 37px;}
+}
+
+@-moz-keyframes eye-left-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 37px;}
+25% {width: 19px;height: 5px;top: 19px;left: 30px;}
+50% {width: 5px;height: 19px;top: 12px;left: 37px;}
+75% {width: 19px;height: 5px;top: 19px;left: 30px;}
+100% {width: 5px;height: 19px;top: 12px;left: 37px;}
+}
+
+@-ms-keyframes eye-left-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 37px;}
+25% {width: 19px;height: 5px;top: 19px;left: 30px;}
+50% {width: 5px;height: 19px;top: 12px;left: 37px;}
+75% {width: 19px;height: 5px;top: 19px;left: 30px;}
+100% {width: 5px;height: 19px;top: 12px;left: 37px;}
+}
+
+@-o-keyframes eye-left-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 37px;}
+25% {width: 19px;height: 5px;top: 19px;left: 30px;}
+50% {width: 5px;height: 19px;top: 12px;left: 37px;}
+75% {width: 19px;height: 5px;top: 19px;left: 30px;}
+100% {width: 5px;height: 19px;top: 12px;left: 37px;}
+}
+
+@keyframes eye-left-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 37px;}
+25% {width: 19px;height: 5px;top: 19px;left: 30px;}
+50% {width: 5px;height: 19px;top: 12px;left: 37px;}
+75% {width: 19px;height: 5px;top: 19px;left: 30px;}
+100% {width: 5px;height: 19px;top: 12px;left: 37px;}
+}
+
+.blink .eye-right {
+-webkit-animation: eye-right-blink 0.3s linear;
+-moz-animation: eye-right-blink 0.3s linear;
+-ms-animation: eye-right-blink 0.3s linear;
+-o-animation: eye-right-blink 0.3s linear;
+animation: eye-right-blink 0.3s linear;
+}
+
+@-webkit-keyframes eye-right-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 58px;}
+25% {width: 19px;height: 5px;top: 18px;left: 51px;}
+50% {width: 5px;height: 19px;top: 12px;left: 58px;}
+75% {width: 19px;height: 5px;top: 18px;left: 51px;}
+100% {width: 5px;height: 19px;top: 12px;left: 58px;}
+}
+
+@-moz-keyframes eye-right-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 58px;}
+25% {width: 19px;height: 5px;top: 18px;left: 51px;}
+50% {width: 5px;height: 19px;top: 12px;left: 58px;}
+75% {width: 19px;height: 5px;top: 18px;left: 51px;}
+100% {width: 5px;height: 19px;top: 12px;left: 58px;}
+}
+
+@-ms-keyframes eye-right-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 58px;}
+25% {width: 19px;height: 5px;top: 18px;left: 51px;}
+50% {width: 5px;height: 19px;top: 12px;left: 58px;}
+75% {width: 19px;height: 5px;top: 18px;left: 51px;}
+100% {width: 5px;height: 19px;top: 12px;left: 58px;}
+}
+
+@-o-keyframes eye-right-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 58px;}
+25% {width: 19px;height: 5px;top: 18px;left: 51px;}
+50% {width: 5px;height: 19px;top: 12px;left: 58px;}
+75% {width: 19px;height: 5px;top: 18px;left: 51px;}
+100% {width: 5px;height: 19px;top: 12px;left: 58px;}
+}
+
+@keyframes eye-right-blink {
+0% {width: 5px;height: 19px;top: 12px;left: 58px;}
+25% {width: 19px;height: 5px;top: 18px;left: 51px;}
+50% {width: 5px;height: 19px;top: 12px;left: 58px;}
+75% {width: 19px;height: 5px;top: 18px;left: 51px;}
+100% {width: 5px;height: 19px;top: 12px;left: 58px;}
+}
+
+.hint .face-smile {
+-webkit-box-shadow: #f6f66e 0 0 50px;
+-moz-box-shadow: #f6f66e 0 0 50px;
+-ms-box-shadow: #f6f66e 0 0 50px;
+-o-box-shadow: #f6f66e 0 0 50px;
+box-shadow: #f6f66e 0 0 50px;
+}
+
+.hint .face-cry {
+-webkit-box-shadow: #add8e6 0 0 50px;
+-moz-box-shadow: #add8e6 0 0 50px;
+-ms-box-shadow: #add8e6 0 0 50px;
+-o-box-shadow: #add8e6 0 0 50px;
+box-shadow: #add8e6 0 0 50px;
+}
+</style>
+</head>
+
+<body>
+<div class="description">
+	<h4>Click to make all of them smile</h4>
+	<span>Row</span>
+	<select id="row">
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5"selected>5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+	</select>
+	<span>Column</span>
+	<select id="column">
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7" selected>7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+	</select>
+	<span>Depth</span>
+	<select id="depth">
+		<option value="1" selected>1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+	</select>
+	<div class="button twinkle" id="start">Press Start</div>
+	<div class="button" id="back">Back</div>
+	<div class="button" id="solve">Solution</div>
+</div>
+<div class="wrapper">
+	<div class="pane"></div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+var Game = function (options) {
+	options = options || {};
+	this.pane = options.pane || ".pane";
+	this.item = options.item || ".item";
+	this.itemHTML = options.itemHTML || '<div class="item"><div class="face face-smile"><div class="eye eye-left"></div><div class="eye eye-right"></div><div class="mouth"></div></div><div class="face face-cry"><div class="eye eye-left"></div><div class="eye eye-right"></div><div class="mouth"></div></div></div>';
+	this.classInverse = options.classInverse || "inverse";
+	this.classHint = options.classHint || "hint";
+	this.classFocus = options.classFocus || "blink";
+	this.row = options.row || 5;
+	this.column = options.column || 5;
+	this.depth = options.depth || 1;
+
+	this.length = this.row * this.column;
+	this.steps = [];
+	this.indexArray = [];
+	this.messCount = Math.floor((this.row + this.column) * 4 / 5);
+	this.blinkID = null;
+
+	this.init();
+}
+
+Game.prototype = {
+	init : function () {
+		var g = this, i;
+
+		for (i = g.length - 1; i >= 0; i--) {
+			g.indexArray.push(i);
+		}
+
+		g.draw().bindEvent().blink();
+
+		return g;
+	},
+	start : function () {
+		return this.stop().run().mess();
+	},
+	stop : function () {
+		var g = this;
+
+		$(g.pane).undelegate(g.item, "click");
+
+		return g;
+	},
+	run : function () {
+		var g = this;
+
+		$(g.pane).delegate(g.item, "click", function () {
+			g.stepOn($(this).index());
+		});
+
+		return g;
+	},
+	blink : function () {
+		var g = this, index;
+
+		g.blinkID = setInterval(function () {
+			index = Math.floor(Math.random() * g.length);
+			$(g.item).removeClass(g.classFocus).eq(index).addClass(g.classFocus);
+		}, 1000);
+
+		return g;
+	},
+	draw : function () {
+		var g = this, content = [], i;
+
+		for (i = g.length - 1; i >= 0; i--) {
+			content.push(g.itemHTML);
+		}
+		$(g.pane).html(content.join('')).css({
+			"width" : g.column * 100,
+			"height" : g.row * 100
+		});
+
+		return g;
+	},
+	getRow : function (index) {
+		return Math.floor(index / this.column);
+	},
+	getColumn : function (index) {
+		return index % this.column;
+	},
+	getNeighbor : function (index) {
+		var g = this, i, top_index , bottom_index, left_index, right_index,
+			neighbor = [];
+
+		for (i = 1; i <= g.depth; i++) {
+			top_index = index - g.column * i;
+			bottom_index = index + g.column * i;
+			left_index = index - i;
+			right_index = index + i;
+
+			if (top_index >= 0 && g.getColumn(top_index) === g.getColumn(index)) {
+				neighbor.push(top_index);
+			}
+
+			if (bottom_index <= g.length - 1 && g.getColumn(bottom_index) === g.getColumn(index)) {
+				neighbor.push(bottom_index);
+			}
+
+			if (left_index >= 0 && g.getRow(left_index) === g.getRow(index)) {
+				neighbor.push(left_index);
+			}
+
+			if (right_index <= g.length - 1 && g.getRow(right_index) === g.getRow(index)) {
+				neighbor.push(right_index);
+			}
+		}
+
+		return neighbor;
+	},
+	bindEvent : function () {
+		var g = this;
+
+		$(g.pane).undelegate(g.item, "mouseenter").delegate(g.item, "mouseenter", function () {
+			var index = $(this).index(), i;
+
+			neighbor = g.getNeighbor(index);
+
+			$(this).addClass(g.classFocus);
+			$(this).addClass(g.classHint);
+			for (i = neighbor.length - 1; i >= 0; i-- ) {
+				$(g.item).eq(neighbor[i]).addClass(g.classHint);
+			}
+		});
+
+		$(g.pane).undelegate(g.item, "mouseleave").delegate(g.item, "mouseleave", function () {
+			$(this).removeClass(g.classFocus);
+			$(g.item).removeClass(g.classHint);
+		});
+
+		return g;
+	},
+	mess : function () {
+		var g = this, messArray = [], i;
+
+		messArray = getUniqueItems(g.indexArray, g.messCount);
+		for (i = 0; i < messArray.length; i++ ) {
+			g.stepOn(messArray[i], true, 500 * 0);
+		}
+
+		return g;
+	},
+	inverse : function (index) {
+		var g = this;
+
+		$(g.item).eq(index).toggleClass(g.classInverse);
+
+		return g;
+	},
+	stepOn : function (index, footprint, delay) {
+		var g = this, i,
+			delay = delay || 0,
+			neighbor = [],
+			footprint = footprint === false ? false : true;
+
+		setTimeout(function () {
+			if (footprint) {
+				g.steps.push(index);
+			}
+			g.inverse(index);
+			neighbor = g.getNeighbor(index);
+			for (i = neighbor.length - 1; i >= 0; i-- ) {
+				g.inverse(neighbor[i]);
+			}
+			if ($(g.item + "." + g.classInverse).length === 0)
+			{
+				g.stop();
+				alert("Mission Complete!");
+			}
+		}, delay);
+
+		return g;
+	},
+	solve : function () {
+		var g = this, i, length;
+
+		g.stop();
+
+		non_repeating(g.steps);
+		length = g.steps.length;
+		for (i = 0; i < length; i++) {
+			g.stepOn(g.steps[i], false, 500 * i);
+		}
+		g.steps = [];
+
+		return g;
+	},
+	goBack : function () {
+		var g = this;
+
+		if (g.steps.length > g.messCount) {
+			g.stepOn(g.steps.pop(), false);
+		} else {
+			alert("Can't go back any more!");
+		}
+
+		return this;
+	}
+
+}
+
+function non_repeating (targetArray, isSorted) {
+	var i, tmp, isSorted = false;
+
+	if (targetArray.length <= 1) {
+		return targetArray;
+	}
+
+	if (!isSorted) {
+		targetArray.sort();
+	}
+	for (i = 0; i < targetArray.length - 1; i++) {
+		if (targetArray[i] === targetArray[i + 1]) {
+			targetArray.splice(i, 2);
+			non_repeating(targetArray, true);
+		}
+	}
+	return targetArray;
+}
+
+function getUniqueItems (targetArray, count) {
+	var result = [], i, tmp, index;
+
+	if (targetArray.length <= count) {
+		return targetArray;
+	}
+
+	result = targetArray.slice(0);
+	for (var i = 0; i < count; i++) {
+		index = i + Math.floor(Math.random() * result.length - i);
+		tmp = result[i];
+		result[i] = result[index];
+		result[index] = tmp;
+	}
+	return result.slice(0 ,count);
+}
+
+$(document).ready(function () {
+	var row, column, depth, game;
+
+	$("#back").hide();
+	$("#solve").hide();
+	row = Number($("#row").val());
+	column = Number($("#column").val()),
+	depth = Number($("#depth").val()),
+	game = new Game({
+		"row" : row,
+		"column" : column,
+		"depth" : depth
+	});
+
+	$("#start").click(function () {
+		clearInterval(game.blinkID);
+		row = Number($("#row").val());
+		column = Number($("#column").val()),
+		depth = Number($("#depth").val()),
+		game = new Game({
+			"row" : row,
+			"column" : column,
+			"depth" : depth
+		}).start();
+	});
+
+	$("#start").one("click", function () {
+		$(this).removeClass("twinkle").html("Restart");
+		$("#back").show();
+		$("#solve").show();
+	});
+
+	$("#back").click(function () {
+		game.goBack();
+	});
+
+	$("#solve").click(function () {
+		game.solve();
+	});
+
+});
+</script>
+</body>
+</html>

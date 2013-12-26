@@ -1,6 +1,7 @@
 var querystring = require("querystring");
 var requestMapping = require("./requestMapping").requestMapping;
 var url = require("url");
+var _static = require("./static");
 function route( request , response , callback ){
 	//（1）	通过解析URI，获取请求方法与请求路径；
 	var pathName = url.parse(request.url).pathname,
@@ -11,6 +12,10 @@ function route( request , response , callback ){
 		_vNames = [],
 		_vValues;
 	console.log("Request for " + pathName);
+	if(pathName.indexOf("static") != -1){
+		_static(pathName,response);
+		return ;
+	}
 	//（2）	将请求路径与本论文设计的Restful接口进行正则表达式匹配
 	if(requestMapping[method]){
 		var _m = requestMapping[method],path,_reg;

@@ -2,7 +2,7 @@ var db = require("./db");
 var path = require("path");
 var settings = require("../settings");
 var _u = undefined;
-//HDFS = require('../node-hdfs');
+//var HDFS = require('../node-hdfs');
 //var hdfs = new HDFS({host:"127.0.0.1", port:"50070"});
 var hdfs = require("fs");
 exports.requestHandler = {
@@ -20,31 +20,32 @@ exports.requestHandler = {
       hdfs_file_path = settings.base_path + hdfs_file_path + "." + resourceType;
       /*******/
       hdfs.readFile(hdfs_file_path,function(e,data){
-       response.writeHead(200 , {
-        "Content-type" : "application/octet-stream;charset=utf-8",
-        "Content-disposition" : "attachment; filename='" + new Buffer(resourceRealName).toString('binary') + "'"
+           response.writeHead(200 , {
+          "Content-type" : "application/octet-stream;charset=utf-8",
+          "Content-disposition" : "attachment; filename='" + new Buffer(resourceRealName).toString('binary') + "'"
       }); 
-       response.write(data);
-       response.end();
+      response.write(data);
+      response.end();
      });
       /*******/
+     /* 
       hdfs.read(hdfs_file_path, 1024*1024, function(reader) {
-        var readed = "";
-        reader.on("data", function(data) {
-          readed += data;
-        });
-        reader.on("end", function(err) {
-          if(!err) {
-            console.log("Finished reading data - Total readed: " + readed);
-          }
+          var readed = "";
+          reader.on("data", function(data) {
+               readed += data;
+          });
+          reader.on("end", function(err) {
+            if(!err) {
+                console.log("Finished reading data - Total readed: " + readed);
+            }
           response.writeHead(200 , {
-            "Content-type" : "application/octet-stream;charset=utf-8",
-            "Content-disposition" : "attachment; filename='" + new Buffer(resourceRealName).toString('binary') + "'"
+              "Content-type" : "application/octet-stream;charset=utf-8",
+              "Content-disposition" : "attachment; filename='" + new Buffer(resourceRealName).toString('binary') + "'"
           }); 
           response.write(data);
           response.end();
         });
-      });
+      }); */
       /*******/
     },_u,_u,_u,pathVariables["id"]);
 },

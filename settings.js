@@ -7,5 +7,11 @@ module.exports = {
 		 database:'BR',
 		 port: 3306
 	},
-	base_path : "C:"
+	base_path : "C:",
+	static_path : "public",
+	contentType : {
+		".html" : "text/html",
+		".js" 	: "text/javascript",
+		".css" 	: "text/css"
+	}
 }
