@@ -23,7 +23,6 @@ module.exports = function (pathname,response) {
 			 	return;  
 			 }  
 			response.writeHead(200, { 'Content-Type': settings.contentType[ext] });  
-			//console.log(file);
 			response.write(file,"binary");
 			response.end();
 		});
